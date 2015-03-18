@@ -19,16 +19,8 @@ public class DataConfig {
         dataSource.setDriverClass(com.ibm.db2.jcc.DB2Driver.class);
         dataSource.setUsername("usuario");
         dataSource.setPassword("senha");
-        //dataSource.setUrl("jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
         dataSource.setUrl("jdbc:db2://1.1.1.1:1000/DATABASE");
 
-
-        // populate some data
-        //JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        //System.out.println("Creating tables");
-        //jdbcTemplate.execute("drop table users if exists");
-        //jdbcTemplate.execute("create table users(id serial, firstName varchar(255), lastName varchar(255), email varchar(255))");
-        //jdbcTemplate.update("INSERT INTO users(firstName, lastName, email) values (?,?,?)", "Mike", "Lanyon", "lanyonm@gmail.com");
 
         return dataSource;
     }
