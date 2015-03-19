@@ -24,7 +24,7 @@ public class CidadeController {
         Cidade cidade = new Cidade();
 
         for (Cidade listaCidade : listaCidades) {
-            if (listaCidade.getCd_cidade() == id)
+            if (listaCidade.getCdCidade() == id)
                 cidade = listaCidade;
         }
 

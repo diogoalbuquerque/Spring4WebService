@@ -3,10 +3,26 @@
 
 <mapper namespace="com.mycompany.persistence.CidadeMapper">
 
-    <cache/>
+    <resultMap id="cidadeResultMap" type="Cidade">
+        <id property="cdCidade" column="CD_CIDADE"/>
+        <result property="nomeCidade" column="NOME_CIDADE"/>
+        <result property="ufCidade" column="UF_CIDADE"/>
+    </resultMap>
 
-    <select id="getAllCidades" resultType="Cidade">
+    <select id="getAllCidades" resultMap="cidadeResultMap">
         SELECT CD_CIDADE, NOME_CIDADE, UF_CIDADE FROM DESENV_CIDADES FOR FETCH ONLY;
     </select>
+
+    <insert id="insertCidade" parameterType="Cidade">
+        INSERT INTO DESENV_CIDADES (CD_CIDADE, NOME_CIDADE, UF_CIDADE)
+        VALUES (#{cd_cidade}, #{nome_cidaed}, #{uf_cidade})
+    </insert>
+
+    <update id="updateCidade" parameterType="Cidade">
+        UPDATE DESENV_CIDADES SET
+        nome_cidade = #{nome_cidade},
+        uf_cidade = #{uf_cidade}
+        WHERE cd_cidade = #{cd_cidade}
+    </update>
 
 </mapper>
