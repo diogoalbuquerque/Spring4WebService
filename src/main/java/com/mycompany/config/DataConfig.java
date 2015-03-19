@@ -19,6 +19,7 @@ public class DataConfig {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.h2.Driver.class);
         dataSource.setUsername("sa");
+//        url para manter os dados =  jdbc:h2:tcp://localhost/~/test
         dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
         dataSource.setPassword("");
 
