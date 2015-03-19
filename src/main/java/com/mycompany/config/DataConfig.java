@@ -19,15 +19,16 @@ public class DataConfig {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.h2.Driver.class);
         dataSource.setUsername("sa");
-        dataSource.setUrl("jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
+        dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE");
         dataSource.setPassword("");
 
-        // populate some data
+        // Criar Tabelas para teste
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        System.out.println("Criando Tabelas");
-//        jdbcTemplate.execute("drop table minhaTabela if exists");
-//        jdbcTemplate.execute("create table minhaTabela(id serial, firstName varchar(255), lastName varchar(255), email varchar(255))");
-//        jdbcTemplate.update("INSERT INTO minhaTabela(firstName, lastName, email) values (?,?,?)", "Mike", "Lanyon", "lanyonm@gmail.com");
+        System.out.println("===========CRIANDO TABELAS===============");
+        jdbcTemplate.execute("DROP TABLE DESENV_CIDADES IF EXISTS");
+        jdbcTemplate.execute("CREATE TABLE DESENV_CIDADES(CD_CIDADE SERIAL, NOME_CIDADE VARCHAR(255), UF_CIDADE VARCHAR(4))");
+        jdbcTemplate.update("INSERT INTO DESENV_CIDADES(CD_CIDADE, NOME_CIDADE, UF_CIDADE) VALUES (?,?,?)", "1", "RIO DE JANEIRO", "RJ");
+        jdbcTemplate.update("INSERT INTO DESENV_CIDADES(CD_CIDADE, NOME_CIDADE, UF_CIDADE) VALUES (?,?,?)", "2", "SÃO PAULO", "SP");
 
         return dataSource;
     }
